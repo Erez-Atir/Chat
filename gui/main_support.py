@@ -26,7 +26,7 @@ muted = {}
 
 #----------------------Functions----------------------
 def error():
-    tkMessageBox.showerror("Error!", traceback.format_exc())
+    pass
 
 
 def receive():
@@ -190,11 +190,11 @@ def receive():
                                 w.output[index].insert('end-1c', "You kicked %s from this room\n" % (get_parameter(data, "Params")), 'tag-right')
                                 w.output[index].config(state='disable')
                                 for i in range(len(w.members_list[index].get('0', 'end'))):
-                                        if w.members_list[index].get('0', 'end')[i] == get_parameter(data, "Params"):
-                                            w.members_list[index].delete(i)
-                                            break
+                                    if w.members_list[index].get('0', 'end')[i] == get_parameter(data, "Params"):
+                                        w.members_list[index].delete(i)
+                                        break
                                 for i in range(len(w.managers_list[index].get('0', 'end'))):
-                                    if w.managers_list[index].get('0', 'end')[i] == get_parameter(data, "Name"):
+                                    if w.managers_list[index].get('0', 'end')[i] == get_parameter(data, "Params"):
                                         w.managers_list[index].delete(i)
                                         break
                             else:
@@ -202,11 +202,11 @@ def receive():
                                 w.output[index].insert('end-1c', "%s has kicked %s from this room.\n\n" % (get_parameter(data, "Name"), get_parameter(data, 'Params')))
                                 w.output[index].config(state='disable')
                                 for i in range(len(w.members_list[index].get('0', 'end'))):
-                                        if w.members_list[index].get('0', 'end')[i] == get_parameter(data, "Name"):
+                                        if w.members_list[index].get('0', 'end')[i] == get_parameter(data, "Params"):
                                             w.members_list[index].delete(i)
                                             break
                                 for i in range(len(w.managers_list[index].get('0', 'end'))):
-                                    if w.managers_list[index].get('0', 'end')[i] == get_parameter(data, "Name"):
+                                    if w.managers_list[index].get('0', 'end')[i] == get_parameter(data, "Params"):
                                         w.managers_list[index].delete(i)
                                         break
                             root.after(50, real_members_click_because_tkinter_is_not_working_properly)
